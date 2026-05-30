@@ -1,0 +1,12 @@
+.DS_Store
+node_modules/
+dist/
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.example
+storage/audio/*
+storage/midi/*
+!storage/audio/.gitkeep
+!storage/midi/.gitkeep

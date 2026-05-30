@@ -1,0 +1,209 @@
+:root {
+  color: #16201d;
+  background: #f4f0e8;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 40px;
+  background:
+    linear-gradient(135deg, rgba(52, 109, 98, 0.18), transparent 36%),
+    #f4f0e8;
+}
+
+.workspace {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.topbar h1,
+.recording-copy h2,
+.section-heading h2,
+.track-row h3 {
+  margin: 0;
+}
+
+.topbar h1 {
+  font-size: 42px;
+  line-height: 1;
+}
+
+.topbar p,
+.recording-copy p,
+.track-row p {
+  margin: 8px 0 0;
+  color: #5c6763;
+}
+
+.primary-action,
+.section-heading button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 0 16px;
+  color: #f7fbf8;
+  background: #1f4d43;
+}
+
+.recording-panel {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+  min-height: 220px;
+  padding: 32px;
+  border: 1px solid rgba(31, 77, 67, 0.16);
+  border-radius: 8px;
+  background: #fffaf0;
+  box-shadow: 0 24px 70px rgba(31, 77, 67, 0.12);
+}
+
+.section-label {
+  display: block;
+  margin-bottom: 12px;
+  color: #b24f36;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.recording-copy h2 {
+  max-width: 560px;
+  font-size: 34px;
+}
+
+.recording-copy p {
+  max-width: 560px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.transport {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.record-button,
+.icon-button {
+  display: inline-grid;
+  place-items: center;
+  color: #fffaf0;
+  background: #b24f36;
+}
+
+.record-button {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+}
+
+.icon-button {
+  width: 52px;
+  height: 52px;
+  background: #243632;
+}
+
+.track-list {
+  margin-top: 28px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.track-row {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  min-height: 78px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(31, 77, 67, 0.13);
+  background: rgba(255, 250, 240, 0.72);
+}
+
+.track-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  color: #1f4d43;
+  background: rgba(31, 77, 67, 0.1);
+}
+
+.track-status {
+  justify-self: end;
+  color: #1f4d43;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    padding: 22px;
+  }
+
+  .topbar,
+  .recording-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .topbar h1 {
+    font-size: 34px;
+  }
+
+  .recording-panel {
+    padding: 24px;
+  }
+
+  .track-row {
+    grid-template-columns: 44px 1fr;
+  }
+
+  .track-status {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
