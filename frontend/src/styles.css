@@ -25,6 +25,36 @@ button {
   cursor: pointer;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+input,
+select {
+  width: 100%;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid rgba(31, 77, 67, 0.22);
+  border-radius: 8px;
+  color: #16201d;
+  background: #fffdf8;
+  font: inherit;
+}
+
+input[type="file"] {
+  min-height: auto;
+  padding: 11px 12px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  color: #3f4d49;
+  font-size: 14px;
+  font-weight: 700;
+}
+
 .app-shell {
   min-height: 100vh;
   padding: 40px;
@@ -69,11 +99,38 @@ button {
 .section-heading button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   min-height: 42px;
   padding: 0 16px;
   color: #f7fbf8;
   background: #1f4d43;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 112px;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid rgba(31, 77, 67, 0.15);
+  border-radius: 999px;
+  color: #1f4d43;
+  background: rgba(255, 250, 240, 0.74);
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.status-pill.failed {
+  color: #9e2f20;
+  background: rgba(178, 79, 54, 0.12);
+}
+
+.status-pill.completed {
+  color: #1f4d43;
+  background: rgba(31, 77, 67, 0.12);
 }
 
 .recording-panel {
@@ -113,6 +170,7 @@ button {
   display: flex;
   align-items: center;
   gap: 12px;
+  color: #b24f36;
 }
 
 .record-button,
@@ -139,12 +197,121 @@ button {
   margin-top: 28px;
 }
 
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.test-panel {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  min-height: 280px;
+  padding: 22px;
+  border: 1px solid rgba(31, 77, 67, 0.13);
+  border-radius: 8px;
+  background: rgba(255, 250, 240, 0.78);
+}
+
+.test-panel h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.mode-switch {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  padding: 5px;
+  border: 1px solid rgba(31, 77, 67, 0.16);
+  border-radius: 8px;
+  background: rgba(31, 77, 67, 0.07);
+}
+
+.mode-switch button,
+.recording-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  color: #344541;
+  background: transparent;
+  font-weight: 800;
+}
+
+.mode-switch button.selected {
+  color: #f7fbf8;
+  background: #1f4d43;
+  box-shadow: 0 6px 18px rgba(31, 77, 67, 0.14);
+}
+
+.record-control {
+  display: grid;
+  gap: 8px;
+  color: #3f4d49;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.recording-action {
+  width: 100%;
+  color: #f7fbf8;
+  background: #b24f36;
+}
+
+.recording-action.stop {
+  background: #243632;
+}
+
+.audio-preview {
+  width: 100%;
+  min-height: 42px;
+}
+
+.muted {
+  overflow-wrap: anywhere;
+  margin: 0;
+  color: #5c6763;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 .section-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 14px;
+}
+
+.midi-actions {
+  display: flex;
+  align-items: end;
+  gap: 10px;
+}
+
+.midi-actions label {
+  min-width: 170px;
+  gap: 6px;
+}
+
+.midi-actions select {
+  min-height: 38px;
+}
+
+.midi-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 14px;
+  color: #f7fbf8;
+  background: #1f4d43;
+  font-weight: 800;
 }
 
 .track-row {
@@ -173,6 +340,17 @@ button {
   color: #1f4d43;
   font-size: 14px;
   font-weight: 700;
+  text-transform: capitalize;
+}
+
+.spin {
+  animation: spin 900ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 720px) {
@@ -196,6 +374,20 @@ button {
 
   .recording-panel {
     padding: 24px;
+  }
+
+  .test-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading,
+  .midi-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .midi-actions label {
+    min-width: 0;
   }
 
   .track-row {
