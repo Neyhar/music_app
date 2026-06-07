@@ -216,3 +216,21 @@ The first pitched-track transcription path is now:
 7. The job is marked `completed` and `midi_path` is populated.
 
 Rhythm tracks are intentionally marked failed for now because drums/beatboxing need a separate rhythm transcription pipeline.
+
+## Torchcrepe Branch Notes
+
+Branch `torchcrepe-transcription` replaces Basic Pitch with a monophonic vocal melody pipeline:
+
+```text
+audio file
+  -> librosa mono 16 kHz load
+  -> torchcrepe pitch + periodicity tracking
+  -> confidence filtering
+  -> median smoothing
+  -> semitone note segmentation
+  -> pretty_midi MIDI writing
+```
+
+This is intended for clean sung or hummed melody takes. It should be easier to tune than Basic Pitch because thresholds, smoothing, note splitting, minimum note length, and note merging are all controlled in `MidiTranscriptionService`.
+
+The first torchcrepe transcription in a fresh process can be slow while the model initializes. Later calls should be faster.
